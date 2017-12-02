@@ -48,7 +48,7 @@ int main(){
 
   //Removing the contents of the array
   for(int i = 0; i < 10; i++){
-    printf("Removing At myArray[%d] : %d\n", 0, *(int*)dynamicGet(myArray,i));
+    printf("Removing At myArray[%d] : %d\n", 0, *(int*)dynamicGet(myArray,0));
     dynamicRemove(myArray, 0);
   }
 
