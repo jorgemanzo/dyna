@@ -76,7 +76,6 @@ void dynamicResize(struct dynamicArray* array){
   if(array->capacity == 0){
     //if the capacity is at 0 grow it to 1;
     newCapacity = 1;
-    array->capacity = 1;
   }
   else{
     //Define newCapcity as twice that of the original Capacity
@@ -103,6 +102,7 @@ void dynamicResize(struct dynamicArray* array){
   free(array->contents);
   //Point the contents pointer to what temp points to.
   array->contents = temp;
+  array->capacity = newCapacity;
 
   temp = NULL;
 }
@@ -153,4 +153,5 @@ void dynamicInsert(struct dynamicArray* array, int index, void* value){
 
   //set the index to a specific value
   dynamicSet(array, index, value);
+  array->size++;
 }
