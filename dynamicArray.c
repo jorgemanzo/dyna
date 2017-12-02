@@ -8,6 +8,11 @@
 #include <stdlib.h>
 #endif
 
+#ifndef STDIO_H
+#define STDIO_H
+#include <stdio.h>
+#endif
+
 /*
 Structure definition of the Dynamic array
 */
