@@ -79,6 +79,7 @@ void dynamicResize(struct dynamicArray* array){
   }
   else{
     //Define newCapcity as twice that of the original Capacity
+    printf("Doubling size\n");
     newCapacity = array->capacity * 2;
   }
 
