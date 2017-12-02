@@ -18,6 +18,7 @@ struct testNums{
 int main(){
   struct dynamicArray* myArray;
   struct testNums test;
+  int* temp;
   test.numbers = (int*) malloc(sizeof(int) * 10);
 
   for(int i = 0; i < 10; i++){
@@ -26,7 +27,8 @@ int main(){
 
   myArray = dynamicCreate();
   for(int i = 0; i < 10; i++){
-    dynamicInsert(myArray, i, test.numbers[i]);
+    temp = &(test.numbers[i]);
+    dynamicInsert(myArray, i, temp);
   }
 
   for(int i = 0; i < 10; i++){
