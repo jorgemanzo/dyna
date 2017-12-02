@@ -66,14 +66,15 @@ Helper function. This will grow the size of the array by 2x the capacity,
 copying values over from the old array to the new array.
 */
 void dynamicResize(struct dynamicArray* array){
+  int newCapacity;
   if(array->capacity == 0){
     //if the capacity is at 0 grow it to 1;
-    int newCapacity = 1;
+    newCapacity = 1;
     array->capacity = 1;
   }
   else{
     //Define newCapcity as twice that of the original Capacity
-    int newCapacity = array->capacity * 2;
+    newCapacity = array->capacity * 2;
   }
 
   //Allocate a new void pointer to point to an array of void pointers
@@ -82,7 +83,7 @@ void dynamicResize(struct dynamicArray* array){
 
   //Copy the elements from the original array to the new array
   for(int i = 0; i < array->capacity; i++){
-    (*temp)[i] = dynamicGet(array,i);
+    temp[i] = dynamicGet(array,i);
   }
   //Free what contents points to in the array.
   free(array->contents);
