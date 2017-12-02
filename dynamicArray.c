@@ -50,6 +50,7 @@ the array itself. -1 for an index will return the value at the end of the array
 void* dynamicGet(struct dynamicArray* array, int index){
   //if the requested index is beyond the capacity, exit the program
   if(index > array->capacity){
+    printf("EXIT AT 53\n")
     exit(1);
   }
   //if the requested index is the end of the array
@@ -113,6 +114,7 @@ void dynamicSet(struct dynamicArray* array, int index, void* value){
   }
   //else the index was not bounded, so exit
   else{
+    printf("EXIT AT 116\n")
     exit(1);
   }
 }
