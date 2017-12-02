@@ -3,6 +3,11 @@
 #include "dynamicArray.h"
 #endif
 
+#ifndef STDLIB_H
+#define STDLIB_H
+#include <stdlib.h>
+#endif
+
 /*
 Structure definition of the Dynamic array
 */
