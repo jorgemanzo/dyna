@@ -1,6 +1,11 @@
 
 #include "dynamicArray.h"
 
+#ifndef STDLIB_H
+#define STDLIB_H
+#include <stdlib.h>
+#endif
+
 struct testNums{
   int* numbers;
 };
