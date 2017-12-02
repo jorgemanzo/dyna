@@ -150,10 +150,11 @@ void dynamicInsert(struct dynamicArray* array, int index, void* value){
   if(dynamicGet(array,index) != NULL){
     dynamicShift(array, index);
   }
-
-  //set the index to a specific value
-  dynamicSet(array, index, value);
-  array->size++;
+  else{
+    //set the index to a specific value
+    dynamicSet(array, index, value);
+    array->size++;
+  }
 }
 
 /*
@@ -183,9 +184,13 @@ void dynamicRemove(struct dynamicArray* array, int index){
   if(index == -1){
     dynamicSet(array, array->size, NULL);
     dynamicCollapse(array,array->size);
+    array->size--;
   }
-  //return the requested index's contents
-  dynamicSet(array, index, NULL);
-  dynamicCollapse(array,index);
+  else{
+    //return the requested index's contents
+    dynamicSet(array, index, NULL);
+    dynamicCollapse(array,index);
+    array->size--;
+  }
 
 }
