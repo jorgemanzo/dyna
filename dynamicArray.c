@@ -38,7 +38,7 @@ points to but not what the contents of the array may point to.
 */
 void dynamicFree(struct dynamicArray* array){
   free(array->contents);
-  free(array)
+  free(array);
 }
 
 /*
