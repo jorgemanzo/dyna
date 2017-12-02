@@ -85,12 +85,43 @@ void dynamicResize(struct dynamicArray* array){
   for(int i = 0; i < array->capacity; i++){
     temp[i] = dynamicGet(array,i);
   }
+  //For the remaining empty spaces, fill them with NULLs
+  for(int i = array->capacity; i < newCapacity; i++){
+    temp[i] = NULL;
+  }
   //Free what contents points to in the array.
   free(array->contents);
   //Point the contents pointer to what temp points to.
   array->contents = temp;
 
   temp = NULL;
+}
+
+
+/*
+Helper function: overwrites the array at a given index with a specified
+value
+*/
+void dynamicSet(struct dynamicArray* array, int index, void* value){
+  //if index is bounded by the capcity of the array
+  if(index < array->capacity){
+    array->contents[index] = value;
+  }
+  //else the index was not bounded, so exit
+  else{
+    exit(1);
+  }
+}
+
+/*
+Helper function: shifts values at index and greater to the right
+by one array index
+*/
+void dynamicShift(struct dynamicArray* array, int index){
+  for(int i = array->capacity - 1; i >= index; i--){
+    //overwrite the contents at i with the contents of i - 1
+    dynamicSet(array, i, dynamicGet(array, i - 1));
+  }
 }
 
 /*
@@ -103,5 +134,12 @@ void dynamicInsert(struct dynamicArray* array, int index, void* value){
   if(array->size == array->capacity){
     dynamicResize(array);
   }
+  //if the array at index is already occupied, we need to shift all elements
+  //greater than index to the right by one space.
+  if(dynamicGet(array,index) != NULL){
+    dynamicShift(array, index);
+  }
 
+  //set the index to a specific value
+  dynamicSet(array, index, value);
 }
