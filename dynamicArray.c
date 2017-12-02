@@ -79,7 +79,7 @@ void dynamicResize(struct dynamicArray* array){
 
   //Allocate a new void pointer to point to an array of void pointers
   void** temp;
-  *temp = (void*) malloc(sizeof(void*) * newCapacity);
+  temp = (void*) malloc(sizeof(void*) * newCapacity);
 
   //Copy the elements from the original array to the new array
   for(int i = 0; i < array->capacity; i++){
