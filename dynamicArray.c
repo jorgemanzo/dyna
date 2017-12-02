@@ -89,12 +89,12 @@ void dynamicResize(struct dynamicArray* array){
 
   //if the array capacity is 1, this means that the old array had
   //no contents at all that need to be copied
-  if(array->capacity != 1){
+  //if(array->capacity != 1){
   //Copy the elements from the original array to the new array
     for(int i = 0; i < array->capacity; i++){
       temp[i] = dynamicGet(array,i);
     }
-  }
+  //}
   //For the remaining empty spaces, fill them with NULLs
   for(int i = array->capacity; i < newCapacity; i++){
     temp[i] = NULL;
