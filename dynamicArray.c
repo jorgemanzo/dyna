@@ -60,7 +60,7 @@ void* dynamicGet(struct dynamicArray* array, int index){
   }
   //if the requested index is the end of the array
   if(index == -1){
-    return array->contents[-1];
+    return array->contents[array->size];
   }
   //return the requested index's contents
   return array->contents[index];
@@ -154,4 +154,38 @@ void dynamicInsert(struct dynamicArray* array, int index, void* value){
   //set the index to a specific value
   dynamicSet(array, index, value);
   array->size++;
+}
+
+/*
+Helper function: This function will collapse values over an open
+space in the array, decreasing the array size but not its Capacituy
+*/
+void dynamicCollapse(struct dynamicArray* array, int index){
+  for(int i = index; i + 1 < array->capacity; i++){
+    //overwrite the contents at i with the contents of i +1
+    dynamicSet(array, i, dynamicGet(array, i + 1));
+  }
+}
+
+
+/*
+Removes a specified value from an index of the array's contents.
+Once removed, remaining contents will collapse towards the left.
+-1 will remove a value from the end of the array.
+*/
+void dynamicRemove(struct dynamicArray* array, int index){
+  //if the requested index is beyond the capacity, exit the program
+  if(index > array->capacity){
+    printf("EXIT AT 53\n");
+    exit(1);
+  }
+  //if the requested index is the end of the array
+  if(index == -1){
+    dynamicSet(array, array->size, NULL);
+    dynamicCollapse(array,array->size);
+  }
+  //return the requested index's contents
+  dynamicSet(array, index, NULL);
+  dynamicCollapse(array,index);
+
 }
