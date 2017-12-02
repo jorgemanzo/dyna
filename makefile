@@ -3,7 +3,7 @@ CC=gcc --std=c99 -g
 all: test
 
 test: test.o dynamicArray.o
-	$(CC) dynamicArray.o -o test
+	$(CC) test.o dynamicArray.o -o test
 
 dynamicArray.o: dynamicArray.c dynamicArray.h
 	$(CC) -c dynamicArray.c
