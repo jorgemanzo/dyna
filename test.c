@@ -35,21 +35,21 @@ int main(){
 
   //Removing values from index 0 to 4
   for(int i = 0; i < 5; i++){
-    printf("Removing At myArray[%d] : %d\n", i, *(int*)dynamicGet(myArray,i));
-    dynamicRemove(myArray, i);
+    printf("Removing At myArray[%d] : %d\n", 0, *(int*)dynamicGet(myArray,0));
+    dynamicRemove(myArray, 0);
   }
 
   //Inserting different values in index 0 to 4
   for(int i = 0; i < 5; i++){
     temp = &(test.numbers[5 - i]);
-    dynamicInsert(myArray, i, temp);
-    printf("Inserting At myArray[%d] : %d\n", i, *(int*)dynamicGet(myArray,i));
+    dynamicInsert(myArray, 0, temp);
+    printf("Inserting At myArray[%d] : %d\n", 0, *(int*)dynamicGet(myArray,0));
   }
 
   //Removing the contents of the array
   for(int i = 0; i < 10; i++){
-    printf("Removing At myArray[%d] : %d\n", i, *(int*)dynamicGet(myArray,i));
-    dynamicRemove(myArray, i);
+    printf("Removing At myArray[%d] : %d\n", 0, *(int*)dynamicGet(myArray,i));
+    dynamicRemove(myArray, 0);
   }
 
   dynamicFree(myArray);
